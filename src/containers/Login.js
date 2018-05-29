@@ -11,7 +11,8 @@ export default class Login extends Component {
     this.state = {
       isLoading: false,
       email: "",
-      password: ""
+      password: "",
+      errorMsg: ""
     };
   }
 
@@ -33,7 +34,10 @@ export default class Login extends Component {
       this.props.userHasAuthenticated(true);
       this.props.history.push("/");
     } catch (e) {
-      alert(e.message);
+      if(e.message == "User is not confirmed.") {
+        //this.setState({ errorMsg: e.message });
+      }
+      this.setState({ errorMsg: e.message });
       this.setState({ isLoading: false });
     }
   }
@@ -59,6 +63,7 @@ export default class Login extends Component {
               type="password"
             />
           </FormGroup>
+          {this.state.errorMsg}
           <LoaderButton
             block
             bsSize="large"

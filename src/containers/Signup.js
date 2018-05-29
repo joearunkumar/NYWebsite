@@ -19,7 +19,9 @@ export default class Signup extends Component {
       password: "",
       confirmPassword: "",
       confirmationCode: "",
-      newUser: null
+      newUser: null,
+      signUperrorMsg: "",
+      confmErrorMsg: ""
     };
   }
 
@@ -53,7 +55,7 @@ export default class Signup extends Component {
         newUser
       });
     } catch (e) {
-      alert(e.message);
+      this.setState({ signUperrorMsg: e.message });
     }
     this.setState({ isLoading: false });
   }
@@ -67,7 +69,7 @@ export default class Signup extends Component {
       this.props.userHasAuthenticated(true);
       this.props.history.push("/");
     } catch (e) {
-      alert(e.message);
+      this.setState({ confmErrorMsg: e.message });
       this.setState({ isLoading: false });
   }
 }
@@ -85,6 +87,7 @@ export default class Signup extends Component {
           />
           <HelpBlock>Please check your email for the code.</HelpBlock>
         </FormGroup>
+        {this.state.confmErrorMsg}
         <LoaderButton
           block
           bsSize="large"
@@ -126,6 +129,7 @@ export default class Signup extends Component {
             type="password"
           />
         </FormGroup>
+        {this.state.signUperrorMsg}
         <LoaderButton
           block
           bsSize="large"
