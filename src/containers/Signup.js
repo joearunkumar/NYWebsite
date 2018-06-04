@@ -17,6 +17,8 @@ export default class Signup extends Component {
       isLoading: false,
       email: "",
       password: "",
+      name: "",
+      contactno: "91",
       confirmPassword: "",
       confirmationCode: "",
       newUser: null,
@@ -46,10 +48,19 @@ export default class Signup extends Component {
   handleSubmit = async event => {
     event.preventDefault();
     this.setState({ isLoading: true });
+    console.log(this.state.name);
+    console.log(this.state.contactno);
     try {
       const newUser = await Auth.signUp({
         username: this.state.email,
-        password: this.state.password
+        password: this.state.password,
+        attributes: {
+          name: this.state.name,
+          address: "Address",
+          gender: "Male",
+          birthdate: "10/05/1990",
+          phone_number: this.state.contactno
+        }
       });
       this.setState({
         newUser
@@ -110,6 +121,24 @@ export default class Signup extends Component {
             autoFocus
             type="email"
             value={this.state.email}
+            onChange={this.handleChange}
+          />
+        </FormGroup>
+        <FormGroup controlId="name" bsSize="large">
+          <ControlLabel>Name</ControlLabel>
+          <FormControl
+            autoFocus
+            type="name"
+            value={this.state.name}
+            onChange={this.handleChange}
+          />
+        </FormGroup>
+        <FormGroup controlId="contactno" bsSize="large">
+          <ControlLabel>Phone</ControlLabel>
+          <FormControl
+            autoFocus
+            type="contactno"
+            value={this.state.contactno}
             onChange={this.handleChange}
           />
         </FormGroup>

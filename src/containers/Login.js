@@ -30,13 +30,13 @@ export default class Login extends Component {
     event.preventDefault();
     this.setState({ isLoading: true });
     try {
-      await Auth.signIn(this.state.email, this.state.password);
+      await Auth.signIn(this.state.email, this.state.password).then(user => console.log(user));
       this.props.userHasAuthenticated(true);
       this.props.history.push("/");
     } catch (e) {
-      if(e.message == "User is not confirmed.") {
-        //this.setState({ errorMsg: e.message });
-      }
+      // if(e.message == "User is not confirmed.") {
+      //   //this.setState({ errorMsg: e.message });
+      // }
       this.setState({ errorMsg: e.message });
       this.setState({ isLoading: false });
     }
