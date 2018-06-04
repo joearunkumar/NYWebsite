@@ -8,6 +8,7 @@
 
 # production
 /build
+/src/congif.js
 
 # misc
 .DS_Store
