@@ -51,7 +51,10 @@ class App extends Component {
         <Navbar fluid collapseOnSelect>
           <Navbar.Header>
             <Navbar.Brand>
-              <Link to="/">NenjaeYezhu</Link>
+              {this.state.isAuthenticated
+                ? <Link to="/memberhome">NenjaeYezhu</Link>
+                : <Link to="/">NenjaeYezhu</Link>
+              }
             </Navbar.Brand>
             <Navbar.Toggle />
           </Navbar.Header>
