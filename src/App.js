@@ -11,7 +11,8 @@ class App extends Component {
     super(props);
     this.state = {
       isAuthenticated: false,
-      isAuthenticating: true
+      isAuthenticating: true,
+      userName: ""
     };
   }
 
@@ -26,7 +27,6 @@ class App extends Component {
         alert(e);
       }
     }
-
     this.setState({ isAuthenticating: false });
   }
 
