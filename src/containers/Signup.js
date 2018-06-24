@@ -5,7 +5,7 @@ import {
   FormControl,
   ControlLabel
 } from "react-bootstrap";
-import LoaderButton from "../components/LoaderButton";
+import LoaderButton from "components/LoaderButton";
 import "./Signup.css";
 import { Auth } from "aws-amplify";
 
@@ -18,7 +18,7 @@ export default class Signup extends Component {
       email: "",
       password: "",
       name: "",
-      contactno: "91",
+      contactno: "+91",
       confirmPassword: "",
       confirmationCode: "",
       newUser: null,

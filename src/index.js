@@ -6,6 +6,7 @@ import registerServiceWorker from "./registerServiceWorker";
 import "./index.css";
 import Amplify from "aws-amplify";
 import config from "./config";
+import LandingPage from "views/LandingPage/LandingPage.jsx";
 
 Amplify.configure({
   Auth: {
@@ -24,7 +25,7 @@ Amplify.configure({
 
 ReactDOM.render(
   <Router>
-    <App />
+    <LandingPage />
   </Router>,
   document.getElementById("root")
 );

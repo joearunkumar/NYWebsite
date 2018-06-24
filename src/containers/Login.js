@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { FormGroup, FormControl, ControlLabel } from "react-bootstrap";
-import LoaderButton from "../components/LoaderButton";
+import LoaderButton from "components/LoaderButton";
 import "./Login.css";
 import { Auth } from "aws-amplify";
 
@@ -32,7 +32,7 @@ export default class Login extends Component {
     try {
       await Auth.signIn(this.state.email, this.state.password).then(user => console.log(user));
       this.props.userHasAuthenticated(true);
-      this.props.history.push("/memberhome");
+      this.props.history.push("/LandingPage");
     } catch (e) {
       // if(e.message == "User is not confirmed.") {
       //   //this.setState({ errorMsg: e.message });

@@ -52,7 +52,7 @@ class App extends Component {
           <Navbar.Header>
             <Navbar.Brand>
               {this.state.isAuthenticated
-                ? <Link to="/memberhome">NenjaeYezhu</Link>
+                ? <Link to="/LandingPage">NenjaeYezhu</Link>
                 : <Link to="/">NenjaeYezhu</Link>
               }
             </Navbar.Brand>
