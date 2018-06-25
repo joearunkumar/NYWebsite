@@ -10,7 +10,7 @@ import LandingPage from "./views/LandingPage/LandingPage.jsx";
 
 export default ({ childProps }) =>
   <Switch>
-    <AppliedRoute path="/" exact component={Home} props={childProps} />
+    <AppliedRoute path="/" exact component={LandingPage} props={childProps} />
     <AppliedRoute path="/login" exact component={Login} props={childProps} />
     <AppliedRoute path="/signup" exact component={Signup} props={childProps} />
     <AppliedRoute path="/memberhome" exact component={MemberHome} props={childProps} />

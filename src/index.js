@@ -25,7 +25,7 @@ Amplify.configure({
 
 ReactDOM.render(
   <Router>
-    <LandingPage />
+    <App />
   </Router>,
   document.getElementById("root")
 );

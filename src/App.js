@@ -5,6 +5,12 @@ import "./App.css";
 import Routes from "./Routes";
 import React, { Component, Fragment } from "react";
 import { Auth } from "aws-amplify";
+import headerLinksStyle from "assets/jss/material-kit-react/components/headerLinksStyle.jsx";
+import ListItem from "@material-ui/core/ListItem";
+import Button from "components/CustomButtons/Button.jsx";
+
+import Header from "components/Header/Header.jsx";
+import withStyles from "@material-ui/core/styles/withStyles";
 
 class App extends Component {
   constructor(props) {
@@ -37,7 +43,22 @@ class App extends Component {
   handleLogout = async event => {
     await Auth.signOut();
     this.userHasAuthenticated(false);
+    this.props.history.push("/LandingPage");
+  }
+  handleSignUp = async event => {
+    this.props.history.push("/Signup");
+  }
+  handleLogIn = async event => {
     this.props.history.push("/login");
+  }
+  handleLogIn = async event => {
+    this.props.history.push("/login");
+  }
+  handleLandingPage = async event => {
+    this.props.history.push("/LandingPage");
+  }
+  handleHome = async event => {
+    this.props.history.push("/");
   }
 
   render() {
@@ -47,33 +68,53 @@ class App extends Component {
     };
     return (
       !this.state.isAuthenticating &&
-      <div className="App container">
-        <Navbar fluid collapseOnSelect>
-          <Navbar.Header>
-            <Navbar.Brand>
-              {this.state.isAuthenticated
-                ? <Link to="/LandingPage">NenjaeYezhu</Link>
-                : <Link to="/">NenjaeYezhu</Link>
-              }
-            </Navbar.Brand>
-            <Navbar.Toggle />
-          </Navbar.Header>
-          <Navbar.Collapse>
-            <Nav pullRight>
-              {this.state.isAuthenticated
-                ? <NavItem onClick={this.handleLogout}>Logout</NavItem>
-                : <Fragment>
-                    <LinkContainer to="/signup">
-                      <NavItem>Signup</NavItem>
-                    </LinkContainer>
-                    <LinkContainer to="/login">
-                      <NavItem>Login</NavItem>
-                    </LinkContainer>
-                  </Fragment>
-              }
-            </Nav>
-          </Navbar.Collapse>
-        </Navbar>
+      <div>
+        <Header
+          color="transparent"
+          brand={ this.state.isAuthenticated
+            ? <Button
+              onClick={this.handleLandingPage}
+              color="transparent"
+              target="_blank"
+            > NenjaeYezhu
+            </Button>
+            : <Button
+              onClick={this.handleHome}
+              color="transparent"
+              target="_blank"
+            > NenjaeYezhu
+            </Button>
+          }
+          rightLinks={this.state.isAuthenticated
+            ? <ListItem>
+              <Button
+                onClick={this.handleLogout}
+                color="transparent"
+                target="_blank"
+              > Logout
+              </Button>
+            </ListItem>
+            : <Fragment>
+              <Button
+                onClick={this.handleSignUp}
+                color="transparent"
+                target="_blank"
+              > Signup
+              </Button>
+              <Button
+                onClick={this.handleLogIn}
+                color="transparent"
+                target="_blank"
+              > Login
+              </Button>
+              </Fragment>
+          }
+          fixed
+          changeColorOnScroll={{
+            height: 200,
+            color: "white"
+          }}
+        />
         <Routes childProps={childProps} />
       </div>
     );
