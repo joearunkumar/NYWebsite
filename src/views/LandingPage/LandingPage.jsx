@@ -27,7 +27,7 @@ class LandingPage extends React.Component {
     const { classes, ...rest } = this.props;
     return (
       <div>
-        <Parallax filter image={require("assets/img/NenjaeYezhu_logo.jpg")}>
+        <Parallax filter image={require("assets/img/NY_Cover.png")}>
         </Parallax>
         <div className={classNames(classes.main, classes.mainRaised)}>
           <div className={classes.container}>

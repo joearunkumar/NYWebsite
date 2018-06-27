@@ -26,6 +26,8 @@ class App extends Component {
     try {
       if (await Auth.currentSession()) {
         this.userHasAuthenticated(true);
+        var userInfo = await Auth.currentUserInfo();
+        this.setState({ userName: userInfo.attributes.name});
       }
     }
     catch(e) {
@@ -68,7 +70,7 @@ class App extends Component {
     };
     return (
       !this.state.isAuthenticating &&
-      <div>
+      <div className="App">
         <Header
           color="transparent"
           brand={ this.state.isAuthenticated
@@ -76,7 +78,7 @@ class App extends Component {
               onClick={this.handleLandingPage}
               color="transparent"
               target="_blank"
-            > NenjaeYezhu
+            > Welcome {this.state.userName}
             </Button>
             : <Button
               onClick={this.handleHome}

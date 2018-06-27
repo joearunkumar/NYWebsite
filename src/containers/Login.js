@@ -32,7 +32,7 @@ export default class Login extends Component {
     try {
       await Auth.signIn(this.state.email, this.state.password).then(user => console.log(user));
       this.props.userHasAuthenticated(true);
-      this.props.history.push("/LandingPage");
+      this.props.history.push("/memberhome");
     } catch (e) {
       // if(e.message == "User is not confirmed.") {
       //   //this.setState({ errorMsg: e.message });
