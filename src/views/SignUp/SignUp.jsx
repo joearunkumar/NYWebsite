@@ -2,6 +2,11 @@ import React from "react";
 import withStyles from "@material-ui/core/styles/withStyles";
 import InputAdornment from "@material-ui/core/InputAdornment";
 import Email from "@material-ui/icons/Email";
+import Phone from "@material-ui/icons/Phone";
+import DateRange from "@material-ui/icons/DateRange";
+import Home from "@material-ui/icons/Home";
+import Portrait from "@material-ui/icons/Portrait";
+import Info from "@material-ui/icons/Info";
 import LockOutline from "@material-ui/icons/LockOutline";
 import People from "@material-ui/icons/People";
 import Header from "components/Header/Header.jsx";
@@ -33,6 +38,9 @@ class SignUp extends React.Component {
       password: "",
       name: "",
       contactno: "+91",
+      address: "",
+      gender: "",
+      birthdate: "",
       confirmPassword: "",
       confirmationCode: "",
       newUser: null,
@@ -161,75 +169,129 @@ class SignUp extends React.Component {
         }}>
         <div className={classes.container}>
           <GridContainer justify="center">
-            <GridItem xs={12} sm={12} md={4}>
+            <GridItem xs={10} sm={10} md={10}>
               <Card className={classes[this.state.cardAnimaton]}>
                 <form onSubmit={this.handleSubmit}>
                   <CardHeader color="primary" className={classes.cardHeader}>
                     <h4>NenjaeYezhu SignUp page</h4>
                   </CardHeader>
                   <CardBody>
-                    <FormGroup controlId="email" bsSize="large">
-                      <CustomInput labelText="Email" id="email" formControlProps={{
-                          fullWidth: true
-                        }} inputProps={{
-                          type: "email",
-                          value: this.state.email,
-                          onChange: this.handleChange,
-                          endAdornment: (<InputAdornment position="end">
-                            <Email className={classes.inputIconsColor}/>
-                          </InputAdornment>)
-                        }}/>
-                    </FormGroup>
-                    <FormGroup controlId="name" bsSize="large">
-                      <CustomInput labelText="Name" id="name" formControlProps={{
-                          fullWidth: true
-                        }} inputProps={{
-                          type: "name",
-                          value: this.state.name,
-                          onChange: this.handleChange,
-                          endAdornment: (<InputAdornment position="end">
-                            <Email className={classes.inputIconsColor}/>
-                          </InputAdornment>)
-                        }}/>
-                    </FormGroup>
-                    <FormGroup controlId="contactno" bsSize="large">
-                      <CustomInput labelText="Phone No" id="contactno" formControlProps={{
-                          fullWidth: true
-                        }} inputProps={{
-                          type: "phoneno",
-                          value: this.state.contactno,
-                          onChange: this.handleChange,
-                          endAdornment: (<InputAdornment position="end">
-                            <Email className={classes.inputIconsColor}/>
-                          </InputAdornment>)
-                        }}/>
-                    </FormGroup>
-                    <FormGroup controlId="password" bsSize="large">
-                      <CustomInput labelText="Password" id="password" formControlProps={{
-                          fullWidth: true
-                        }} inputProps={{
-                          type: "password",
-                          value: this.state.password,
-                          onChange: this.handleChange,
-                          endAdornment: (<InputAdornment position="end">
-                            <LockOutline className={classes.inputIconsColor}/>
-                          </InputAdornment>)
-                        }}/>
-                    </FormGroup>
-                    <FormGroup controlId="confirmPassword" bsSize="large">
-                      <CustomInput labelText="Confirm Password" id="confirmPassword" formControlProps={{
-                          fullWidth: true
-                        }} inputProps={{
-                          type: "password",
-                          value: this.state.confirmPassword,
-                          onChange: this.handleChange,
-                          endAdornment: (<InputAdornment position="end">
-                            <LockOutline className={classes.inputIconsColor}/>
-                          </InputAdornment>)
-                        }}/>
-                    </FormGroup>
-                    {this.state.signUperrorMsg}
-                    <LoaderButton block="block" bsSize="large" disabled={!this.validateForm()} type="submit" isLoading={this.state.isLoading} text="SignUp" loadingText="Signing up…"/>
+                    <GridContainer justify="center">
+                      <GridItem xs={12} sm={12} md={5}>
+                        <FormGroup controlId="name" bsSize="large">
+                          <CustomInput labelText="Name" id="name" formControlProps={{
+                              fullWidth: true
+                            }} inputProps={{
+                              type: "name",
+                              value: this.state.name,
+                              onChange: this.handleChange,
+                              endAdornment: (<InputAdornment position="end">
+                                <Portrait className={classes.inputIconsColor}/>
+                              </InputAdornment>)
+                            }}/>
+                        </FormGroup>
+                      </GridItem>
+                      <GridItem xs={12} sm={12} md={5}>
+                        <FormGroup controlId="email" bsSize="large">
+                          <CustomInput labelText="Email" id="email" formControlProps={{
+                              fullWidth: true
+                            }} inputProps={{
+                              type: "email",
+                              value: this.state.email,
+                              onChange: this.handleChange,
+                              endAdornment: (<InputAdornment position="end">
+                                <Email className={classes.inputIconsColor}/>
+                              </InputAdornment>)
+                            }}/>
+                        </FormGroup>
+                      </GridItem>
+                      <GridItem xs={12} sm={12} md={5}>
+                        <FormGroup controlId="contactno" bsSize="large">
+                          <CustomInput labelText="Phone No" id="contactno" formControlProps={{
+                              fullWidth: true
+                            }} inputProps={{
+                              type: "phoneno",
+                              value: this.state.contactno,
+                              onChange: this.handleChange,
+                              endAdornment: (<InputAdornment position="end">
+                                <Phone className={classes.inputIconsColor}/>
+                              </InputAdornment>)
+                            }}/>
+                        </FormGroup>
+                      </GridItem>
+                      <GridItem xs={12} sm={12} md={5}>
+                        <FormGroup controlId="address" bsSize="large">
+                          <CustomInput labelText="Address" id="address" formControlProps={{
+                              fullWidth: true
+                            }} inputProps={{
+                              type: "address",
+                              value: this.state.address,
+                              onChange: this.handleChange,
+                              endAdornment: (<InputAdornment position="end">
+                                <Home className={classes.inputIconsColor}/>
+                              </InputAdornment>)
+                            }}/>
+                        </FormGroup>
+                      </GridItem>
+                      <GridItem xs={12} sm={12} md={5}>
+                        <FormGroup controlId="gender" bsSize="large">
+                          <CustomInput labelText="Gender" id="gender" formControlProps={{
+                              fullWidth: true
+                            }} inputProps={{
+                              type: "gender",
+                              value: this.state.gender,
+                              onChange: this.handleChange,
+                              endAdornment: (<InputAdornment position="end">
+                                <Info className={classes.inputIconsColor}/>
+                              </InputAdornment>)
+                            }}/>
+                        </FormGroup>
+                      </GridItem>
+                      <GridItem xs={12} sm={12} md={5}>
+                        <FormGroup controlId="birthdate" bsSize="large">
+                          <CustomInput labelText="Date of Birth" id="birthdate" formControlProps={{
+                              fullWidth: true
+                            }} inputProps={{
+                              type: "birthdate",
+                              value: this.state.birthdate,
+                              onChange: this.handleChange,
+                              endAdornment: (<InputAdornment position="end">
+                                <DateRange className={classes.inputIconsColor}/>
+                              </InputAdornment>)
+                            }}/>
+                        </FormGroup>
+                      </GridItem>
+                      <GridItem xs={12} sm={12} md={5}>
+                        <FormGroup controlId="password" bsSize="large">
+                          <CustomInput labelText="Password" id="password" formControlProps={{
+                              fullWidth: true
+                            }} inputProps={{
+                              type: "password",
+                              value: this.state.password,
+                              onChange: this.handleChange,
+                              endAdornment: (<InputAdornment position="end">
+                                <LockOutline className={classes.inputIconsColor}/>
+                              </InputAdornment>)
+                            }}/>
+                        </FormGroup>
+                      </GridItem>
+                      <GridItem xs={12} sm={12} md={5}>
+                        <FormGroup controlId="confirmPassword" bsSize="large">
+                          <CustomInput labelText="Confirm Password" id="confirmPassword" formControlProps={{
+                              fullWidth: true
+                            }} inputProps={{
+                              type: "password",
+                              value: this.state.confirmPassword,
+                              onChange: this.handleChange,
+                              endAdornment: (<InputAdornment position="end">
+                                <LockOutline className={classes.inputIconsColor}/>
+                              </InputAdornment>)
+                            }}/>
+                        </FormGroup>
+                      </GridItem>
+                      {this.state.signUperrorMsg}
+                      <LoaderButton block="block" bsSize="large" disabled={!this.validateForm()} type="submit" isLoading={this.state.isLoading} text="SignUp" loadingText="Signing up…"/>
+                    </GridContainer>
                   </CardBody>
                 </form>
               </Card>
