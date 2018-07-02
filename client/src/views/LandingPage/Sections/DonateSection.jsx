@@ -1,8 +1,8 @@
-import React, { Component } from "react";
+import React, {Component} from "react";
 // @material-ui/core components
 import withStyles from "@material-ui/core/styles/withStyles";
-import { LinkContainer } from "react-router-bootstrap";
-import { Link, withRouter } from "react-router-dom";
+import {LinkContainer} from "react-router-bootstrap";
+import {Link, withRouter} from "react-router-dom";
 
 // @material-ui/icons
 
@@ -32,21 +32,20 @@ class DonateSection extends Component {
         <GridItem cs={12} sm={12} md={8}>
           <h2 className={classes.title}>Donate to our trust</h2>
           <h4 className={classes.description}></h4>
-          <form>
-            <div class='pm-button'>
-              <center>
+          <center>
+            <form>
+              <div class='pm-button'>
+
                 <a href='https://www.payumoney.com/sandbox/paybypayumoney/#/461C266E200580B10F4C08D68DD10F00'>
-                <img src='https://www.payumoney.com/media/images/payby_payumoney/new_buttons/23.png' />
+                  <img src='https://www.payumoney.com/media/images/payby_payumoney/new_buttons/23.png'/>
                 </a>
-              </center>
-            </div>
-            <Button
-              onClick={this.handlePayumoney}
-              color="transparent"
-              target="_blank"
-            > Donate
-            </Button>
-          </form>
+
+              </div>
+              <Button onClick={this.handlePayumoney} target="_blank">
+                Donate
+              </Button>
+            </form>
+          </center>
         </GridItem>
       </GridContainer>
     </div>);

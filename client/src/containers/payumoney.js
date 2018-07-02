@@ -6,11 +6,11 @@ class payumoney extends Component {
   };
 
   componentDidMount() {
-    this.payumoney().then(res => this.setState({response: res})).catch(err => console.log(err));
+    //this.payumoney().then(res => this.setState({response: res})).catch(err => console.log(err));
     //this.callApi().then(res => this.setState({response: res.express})).catch(err => console.log(err));
   }
 
-  payumoney() {
+  /*payumoney() {
     //Create a Data object that is to be passed to LAUNCH method of Bolt
     var pd = {
       key: 'B3BoXcyz',
@@ -74,7 +74,7 @@ class payumoney extends Component {
         // Make any UI changes to convey the error to the user
       }
     });
-  }
+  }*/
 
   callApi = async () => {
     const response = await fetch('/api/hello');

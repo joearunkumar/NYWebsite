@@ -21,7 +21,7 @@ import CustomInput from "components/CustomInput/CustomInput.jsx";
 import {Auth} from "aws-amplify";
 import {FormGroup, FormControl, ControlLabel} from "react-bootstrap";
 import loginPageStyle from "assets/jss/material-kit-react/views/loginPage.jsx";
-import image from "assets/img/bg7.jpg";
+import image from "assets/img/sample2.jpg";
 import LoaderButton from "components/LoaderButton";
 
 class LoginPage extends React.Component {
