@@ -21,7 +21,7 @@ import CustomInput from "components/CustomInput/CustomInput.jsx";
 import {Auth} from "aws-amplify";
 import {FormGroup, FormControl, ControlLabel} from "react-bootstrap";
 import loginPageStyle from "assets/jss/material-kit-react/views/loginPage.jsx";
-import image from "assets/img/sample2.jpg";
+import image from "assets/img/bg8.png";
 import LoaderButton from "components/LoaderButton";
 
 class LoginPage extends React.Component {
@@ -90,7 +90,7 @@ class LoginPage extends React.Component {
             <GridItem xs={12} sm={12} md={4}>
               <Card className={classes[this.state.cardAnimaton]}>
                 <form onSubmit={this.handleSubmit}>
-                  <CardHeader color="primary" className={classes.cardHeader}>
+                  <CardHeader color="success" className={classes.cardHeader}>
                     <h4>Login to NenjaeYezhu</h4>
                   </CardHeader>
                   <CardBody>

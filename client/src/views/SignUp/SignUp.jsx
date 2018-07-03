@@ -21,7 +21,7 @@ import CardHeader from "components/Card/CardHeader.jsx";
 import CardFooter from "components/Card/CardFooter.jsx";
 import CustomInput from "components/CustomInput/CustomInput.jsx";
 import loginPageStyle from "assets/jss/material-kit-react/views/loginPage.jsx";
-import image from "assets/img/sample2.jpg";
+import image from "assets/img/bg8.png";
 import {Auth} from "aws-amplify";
 import {HelpBlock, FormGroup, FormControl, ControlLabel} from "react-bootstrap";
 import LoaderButton from "components/LoaderButton";
@@ -94,7 +94,7 @@ class SignUp extends React.Component {
       await Auth.confirmSignUp(this.state.email, this.state.confirmationCode);
       await Auth.signIn(this.state.email, this.state.password);
       this.props.userHasAuthenticated(true);
-      this.props.history.push("/memberhome");
+      this.props.history.push("/LandingPage");
     } catch (e) {
       this.setState({confmErrorMsg: e.message});
       this.setState({isLoading: false});
@@ -122,28 +122,34 @@ class SignUp extends React.Component {
         }}>
         <div className={classes.container}>
           <GridContainer justify="center">
-            <GridItem xs={12} sm={12} md={4}>
+            <GridItem xs={12} sm={12} md={6}>
               <Card className={classes[this.state.cardAnimaton]}>
                 <form onSubmit={this.handleConfirmationSubmit}>
-                  <CardHeader color="primary" className={classes.cardHeader}>
+                  <CardHeader color="info" className={classes.cardHeader}>
                     <h4>NenjaeYezhu SignUp page</h4>
                   </CardHeader>
                   <CardBody>
-                    <FormGroup controlId="confirmationCode" bsSize="large">
-                      <CustomInput labelText="Confirmation Code" id="confirmationCode" formControlProps={{
-                          fullWidth: true
-                        }} inputProps={{
-                          type: "tel",
-                          value: this.state.confirmationCode,
-                          onChange: this.handleChange,
-                          endAdornment: (<InputAdornment position="end">
-                            <Email className={classes.inputIconsColor}/>
-                          </InputAdornment>)
-                        }}/>
-                      <HelpBlock>Please check your email for the code.</HelpBlock>
-                    </FormGroup>
-                    {this.state.confmErrorMsg}
-                    <LoaderButton block="block" bsSize="large" disabled={!this.validateConfirmationForm()} type="submit" isLoading={this.state.isLoading} text="Verify" loadingText="Verifying…"/>
+                    <GridContainer justify="center">
+                      <GridItem xs={12} sm={12} md={5}>
+                        <FormGroup controlId="confirmationCode" bsSize="large">
+                          <CustomInput labelText="Confirmation Code" id="confirmationCode" formControlProps={{
+                              fullWidth: true
+                            }} inputProps={{
+                              type: "tel",
+                              value: this.state.confirmationCode,
+                              onChange: this.handleChange,
+                              endAdornment: (<InputAdornment position="end">
+                                <Email className={classes.inputIconsColor}/>
+                              </InputAdornment>)
+                            }}/>
+                          <HelpBlock>Please check your email for the code.</HelpBlock>
+                        </FormGroup>
+                      </GridItem>
+                      <GridItem xs={12} sm={12} md={12}>
+                        {this.state.confmErrorMsg}
+                        <LoaderButton block="block" bsSize="large" disabled={!this.validateConfirmationForm()} type="submit" isLoading={this.state.isLoading} text="Verify" loadingText="Verifying…"/>
+                      </GridItem>
+                    </GridContainer>
                   </CardBody>
                 </form>
               </Card>
@@ -172,7 +178,7 @@ class SignUp extends React.Component {
             <GridItem xs={10} sm={10} md={10}>
               <Card className={classes[this.state.cardAnimaton]}>
                 <form onSubmit={this.handleSubmit}>
-                  <CardHeader color="primary" className={classes.cardHeader}>
+                  <CardHeader color="success" className={classes.cardHeader}>
                     <h4>NenjaeYezhu SignUp page</h4>
                   </CardHeader>
                   <CardBody>
@@ -289,8 +295,10 @@ class SignUp extends React.Component {
                             }}/>
                         </FormGroup>
                       </GridItem>
-                      {this.state.signUperrorMsg}
-                      <LoaderButton block="block" bsSize="large" disabled={!this.validateForm()} type="submit" isLoading={this.state.isLoading} text="SignUp" loadingText="Signing up…"/>
+                      <GridItem xs={12} sm={12} md={12}>
+                        {this.state.signUperrorMsg}
+                        <LoaderButton block="block" bsSize="large" disabled={!this.validateForm()} type="submit" isLoading={this.state.isLoading} text="SignUp" loadingText="Signing up…"/>
+                      </GridItem>
                     </GridContainer>
                   </CardBody>
                 </form>

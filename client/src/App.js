@@ -78,11 +78,11 @@ class App extends Component {
     };
     return (!this.state.isAuthenticating && <div className="App">
       <Idle timeout={60000} onChange={({idle}) => {
-          if (idle) {
+          if (idle && this.state.isAuthenticated) {
             this.handleSessionExpired()
           }
         }}/>
-      <Header color="infoColor" brand={this.state.isAuthenticated
+      <Header color="success" brand={this.state.isAuthenticated
           ? <Button onClick={this.handleLandingPage} color="transparent" target="_blank">
               Welcome {this.state.userName}
             </Button>

@@ -18,7 +18,7 @@ class SessionExpiredPage extends React.Component {
       classes,
       ...rest
     } = this.props;
-    return (<div style={{'margin-top':'4em'}}>
+    return (<div style={{'margin-top':'8em'}}>
       <GridContainer justify="center">
         <GridItem cs={12} sm={12} md={4}>
         <InfoArea
