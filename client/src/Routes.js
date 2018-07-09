@@ -13,7 +13,6 @@ export default ({ childProps }) =>
     <AppliedRoute path="/" exact component={LandingPage} props={childProps} />
     <AppliedRoute path="/login" exact component={Login} props={childProps} />
     <AppliedRoute path="/signup" exact component={Signup} props={childProps} />
-
     <AppliedRoute path="/landingPage" exact component={LandingPage} props={childProps} />
     <AppliedRoute path="/payumoney" exact component={payumoney} props={childProps} />
     <AppliedRoute path="/sessionExpiredPage" exact component={SessionExpiredPage} props={childProps} />
