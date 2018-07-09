@@ -21,16 +21,21 @@ import CardHeader from "components/Card/CardHeader.jsx";
 import CardFooter from "components/Card/CardFooter.jsx";
 import CustomInput from "components/CustomInput/CustomInput.jsx";
 import loginPageStyle from "assets/jss/material-kit-react/views/loginPage.jsx";
-import image from "assets/img/bg8.png";
+import image from "assets/img/green_bg.png";
 import {Auth} from "aws-amplify";
 import {HelpBlock, FormGroup, FormControl, ControlLabel} from "react-bootstrap";
 import LoaderButton from "components/LoaderButton";
+import FormControlLabel from "@material-ui/core/FormControlLabel";
+import Radio from "@material-ui/core/Radio";
+import FiberManualRecord from "@material-ui/icons/FiberManualRecord";
+import basicsStyle from "assets/jss/material-kit-react/views/componentsSections/basicsStyle.jsx";
+import Datetime from "react-datetime";
+import moment from 'moment'
 
 class SignUp extends React.Component {
 
   constructor(props) {
     super(props);
-    // we use this to make the card to appear after the page has been rendered
     this.state = {
       cardAnimaton: "cardHidden",
       isLoading: false,
@@ -63,20 +68,34 @@ class SignUp extends React.Component {
     });
   }
 
+  handleChangeDate = (date) => {
+    console.log(date)
+    if(moment.isMoment(date)){
+      this.setState({
+        birthdate: date.format('DD/MM/YYYY')
+      })
+    }
+  }
+
   handleSubmit = async event => {
     event.preventDefault();
     this.setState({isLoading: true});
+    console.log("Details-->");
+    console.log(this.state.email);
     console.log(this.state.name);
     console.log(this.state.contactno);
+    console.log(this.state.address);
+    console.log(this.state.gender);
+    console.log(this.state.birthdate);
     try {
       const newUser = await Auth.signUp({
         username: this.state.email,
         password: this.state.password,
         attributes: {
           name: this.state.name,
-          address: "Address",
-          gender: "Male",
-          birthdate: "10/05/1990",
+          address: this.state.address,
+          gender: this.state.gender,
+          birthdate: this.state.birthdate,
           phone_number: this.state.contactno
         }
       });
@@ -102,7 +121,6 @@ class SignUp extends React.Component {
   }
 
   componentDidMount() {
-    // we add a hidden class to the card and after 700 ms we delete it and the transition appears
     setTimeout(function() {
       this.setState({cardAnimaton: ""});
     }.bind(this), 700);
@@ -125,8 +143,8 @@ class SignUp extends React.Component {
             <GridItem xs={12} sm={12} md={6}>
               <Card className={classes[this.state.cardAnimaton]}>
                 <form onSubmit={this.handleConfirmationSubmit}>
-                  <CardHeader color="info" className={classes.cardHeader}>
-                    <h4>NenjaeYezhu SignUp page</h4>
+                  <CardHeader color="success" className={classes.cardHeader}>
+                    <h4>NenjaeYezhu Confirmation Page</h4>
                   </CardHeader>
                   <CardBody>
                     <GridContainer justify="center">
@@ -240,31 +258,77 @@ class SignUp extends React.Component {
                         </FormGroup>
                       </GridItem>
                       <GridItem xs={12} sm={12} md={5}>
-                        <FormGroup controlId="gender" bsSize="large">
-                          <CustomInput labelText="Gender" id="gender" formControlProps={{
-                              fullWidth: true
-                            }} inputProps={{
-                              type: "gender",
-                              value: this.state.gender,
-                              onChange: this.handleChange,
-                              endAdornment: (<InputAdornment position="end">
-                                <Info className={classes.inputIconsColor}/>
-                              </InputAdornment>)
-                            }}/>
-                        </FormGroup>
+                        <GridContainer justify="center">
+                          <GridItem xs={4} sm={4} md={4}>
+                            <div className={classes.checkboxAndRadio + " " + classes.checkboxAndRadioHorizontal}>
+                              <FormControlLabel control={<Radio
+                                checked = {
+                                  this.state.gender === "male"
+                                }
+                                onChange = {
+                                  this.handleChange
+                                }
+                                value = "male"
+                                id = "gender"
+                                name = "radio button enabled"
+                                aria-label = "A"
+                                icon = {
+                                  <FiberManualRecord className={classes.radioUnchecked}/>
+                                }
+                                checkedIcon = {
+                                  <FiberManualRecord className={classes.radioChecked}/>
+                                }
+                                classes = {{
+                                  checked: classes.radio
+                                }}
+                                />} classes={{
+                                  label: classes.label
+                                }} label="Male"/>
+                            </div>
+                          </GridItem>
+                          <GridItem xs={6} sm={6} md={6}>
+                            <div className={classes.checkboxAndRadio + " " + classes.checkboxAndRadioHorizontal}>
+                              <FormControlLabel control={<Radio
+                                checked = {
+                                  this.state.gender === "female"
+                                }
+                                onChange = {
+                                  this.handleChange
+                                }
+                                id = "gender"
+                                value = "female"
+                                name = "radio button enabled"
+                                aria-label = "B"
+                                icon = {
+                                  <FiberManualRecord className={classes.radioUnchecked}/>
+                                }
+                                checkedIcon = {
+                                  <FiberManualRecord className={classes.radioChecked}/>
+                                }
+                                classes = {{
+                                  checked: classes.radio
+                                }}
+                                />} classes={{
+                                  label: classes.label
+                                }} label="Female"/>
+                            </div>
+                          </GridItem>
+                          <GridItem xs={2} sm={2} md={2}>
+                            <br/><br/>
+                            <InputAdornment position="right">
+                              <People className={classes.inputIconsColor}/>
+                            </InputAdornment>
+                          </GridItem>
+                        </GridContainer>
                       </GridItem>
                       <GridItem xs={12} sm={12} md={5}>
                         <FormGroup controlId="birthdate" bsSize="large">
-                          <CustomInput labelText="Date of Birth" id="birthdate" formControlProps={{
-                              fullWidth: true
-                            }} inputProps={{
-                              type: "birthdate",
-                              value: this.state.birthdate,
-                              onChange: this.handleChange,
-                              endAdornment: (<InputAdornment position="end">
-                                <DateRange className={classes.inputIconsColor}/>
-                              </InputAdornment>)
-                            }}/>
+                          <Datetime
+                            inputProps={{ placeholder: "Date of Birth" }}
+                            value={this.state.myDate}
+                            timeFormat={false}
+                            onChange={this.handleChangeDate}
+                          />
                         </FormGroup>
                       </GridItem>
                       <GridItem xs={12} sm={12} md={5}>
@@ -296,7 +360,11 @@ class SignUp extends React.Component {
                         </FormGroup>
                       </GridItem>
                       <GridItem xs={12} sm={12} md={12}>
-                        {this.state.signUperrorMsg}
+                        <center>
+                          <h4 style={{
+                              color: "red"
+                            }}>{this.state.signUperrorMsg}</h4>
+                        </center>
                         <LoaderButton block="block" bsSize="large" disabled={!this.validateForm()} type="submit" isLoading={this.state.isLoading} text="SignUp" loadingText="Signing up…"/>
                       </GridItem>
                     </GridContainer>

@@ -77,7 +77,7 @@ class App extends Component {
       userHasAuthenticated: this.userHasAuthenticated
     };
     return (!this.state.isAuthenticating && <div className="App">
-      <Idle timeout={60000} onChange={({idle}) => {
+      <Idle timeout={300000} onChange={({idle}) => {
           if (idle && this.state.isAuthenticated) {
             this.handleSessionExpired()
           }
