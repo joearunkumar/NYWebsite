@@ -21,7 +21,7 @@ import CardHeader from "components/Card/CardHeader.jsx";
 import CardFooter from "components/Card/CardFooter.jsx";
 import CustomInput from "components/CustomInput/CustomInput.jsx";
 import loginPageStyle from "assets/jss/material-kit-react/views/loginPage.jsx";
-import image from "assets/img/green_bg.png";
+import image from "assets/img/white_bg.jpg";
 import {Auth} from "aws-amplify";
 import {HelpBlock, FormGroup, FormControl, ControlLabel} from "react-bootstrap";
 import LoaderButton from "components/LoaderButton";
@@ -30,7 +30,7 @@ import Radio from "@material-ui/core/Radio";
 import FiberManualRecord from "@material-ui/icons/FiberManualRecord";
 import basicsStyle from "assets/jss/material-kit-react/views/componentsSections/basicsStyle.jsx";
 import Datetime from "react-datetime";
-import moment from 'moment'
+import moment from "moment";
 
 class SignUp extends React.Component {
 
@@ -113,7 +113,7 @@ class SignUp extends React.Component {
       await Auth.confirmSignUp(this.state.email, this.state.confirmationCode);
       await Auth.signIn(this.state.email, this.state.password);
       this.props.userHasAuthenticated(true);
-      this.props.history.push("/LandingPage");
+      this.props.history.push("/MemberPage");
     } catch (e) {
       this.setState({confmErrorMsg: e.message});
       this.setState({isLoading: false});
@@ -143,7 +143,7 @@ class SignUp extends React.Component {
             <GridItem xs={12} sm={12} md={6}>
               <Card className={classes[this.state.cardAnimaton]}>
                 <form onSubmit={this.handleConfirmationSubmit}>
-                  <CardHeader color="success" className={classes.cardHeader}>
+                  <CardHeader color="custom" className={classes.cardHeader}>
                     <h4>NenjaeYezhu Confirmation Page</h4>
                   </CardHeader>
                   <CardBody>
@@ -196,7 +196,7 @@ class SignUp extends React.Component {
             <GridItem xs={10} sm={10} md={10}>
               <Card className={classes[this.state.cardAnimaton]}>
                 <form onSubmit={this.handleSubmit}>
-                  <CardHeader color="success" className={classes.cardHeader}>
+                  <CardHeader color="custom" className={classes.cardHeader}>
                     <h4>NenjaeYezhu SignUp page</h4>
                   </CardHeader>
                   <CardBody>

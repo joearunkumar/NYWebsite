@@ -113,6 +113,11 @@ const headerStyle = {
     boxShadow:
       "0 4px 20px 0px rgba(0, 0, 0, 0.14), 0 7px 12px -5px rgba(33, 33, 33, 0.46)"
   },
+  custom: {
+    color: "#fff",
+    background: "linear-gradient(60deg, #0C8DD2, #d81b60)",
+    boxShadow:"0 4px 20px 0px rgba(0, 0, 0, 0.14), 0 7px 12px -5px rgba(33, 33, 33, 0.46)"
+  },
   white: {
     border: "0",
     padding: "0.625rem 0",
@@ -120,7 +125,7 @@ const headerStyle = {
     color: "#555",
     backgroundColor: "#fff !important",
     boxShadow:
-      "0 4px 18px 0px rgba(0, 0, 0, 0.12), 0 7px 10px -5px rgba(0, 0, 0, 0.15)"
+      "0 4px 18px 0px rgba(0, 0, 0, 0.12), 0 7px 10px -5px rgba(12, 141, 210, 0.15)"
   },
   drawerPaper: {
     border: "none",

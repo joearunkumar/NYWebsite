@@ -64,8 +64,8 @@ class App extends Component {
   handleLogIn = async event => {
     this.props.history.push("/login");
   }
-  handleLandingPage = async event => {
-    this.props.history.push("/LandingPage");
+  handleMemberPage = async event => {
+    this.props.history.push("/MemberPage");
   }
   handleHome = async event => {
     this.props.history.push("/");
@@ -82,12 +82,12 @@ class App extends Component {
             this.handleSessionExpired()
           }
         }}/>
-      <Header color="success" brand={this.state.isAuthenticated
-          ? <Button onClick={this.handleLandingPage} color="transparent" target="_blank">
-              Welcome {this.state.userName}
+      <Header color="custom" brand={this.state.isAuthenticated
+          ? <Button onClick={this.handleMemberPage} color="transparent" target="_blank">
+              Nenjae Yezhu
             </Button>
           : <Button onClick={this.handleHome} color="transparent" target="_blank">
-            NenjaeYezhu
+            Nenjae Yezhu
           </Button>} rightLinks={this.state.isAuthenticated
           ? <ListItem>
               <Button onClick={this.handleLogout} color="transparent" target="_blank">
@@ -103,7 +103,7 @@ class App extends Component {
             </Button>
           </Fragment>} fixed="fixed" changeColorOnScroll={{
           height: 200,
-          color: "black"
+          color: "white"
         }}/>
       <Routes childProps={childProps}/>
     </div>);

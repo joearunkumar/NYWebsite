@@ -6,7 +6,8 @@ import AppliedRoute from "./components/AppliedRoute";
 import Signup from "views/SignUp/SignUp.jsx";
 import LandingPage from "./views/LandingPage/LandingPage.jsx";
 import payumoney from "./containers/payumoney";
-import SessionExpiredPage from "views/SessionExpiredPage.jsx"
+import SessionExpiredPage from "views/SessionExpiredPage.jsx";
+import MemberPage from "views/MemberPage/MemberPage.jsx";
 
 export default ({ childProps }) =>
   <Switch>
@@ -14,6 +15,7 @@ export default ({ childProps }) =>
     <AppliedRoute path="/login" exact component={Login} props={childProps} />
     <AppliedRoute path="/signup" exact component={Signup} props={childProps} />
     <AppliedRoute path="/landingPage" exact component={LandingPage} props={childProps} />
+    <AppliedRoute path="/memberPage" exact component={MemberPage} props={childProps} />
     <AppliedRoute path="/payumoney" exact component={payumoney} props={childProps} />
     <AppliedRoute path="/sessionExpiredPage" exact component={SessionExpiredPage} props={childProps} />
     { /* Finally, catch all unmatched routes */ }

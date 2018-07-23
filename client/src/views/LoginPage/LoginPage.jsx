@@ -21,7 +21,7 @@ import CustomInput from "components/CustomInput/CustomInput.jsx";
 import {Auth} from "aws-amplify";
 import {FormGroup, FormControl, ControlLabel} from "react-bootstrap";
 import loginPageStyle from "assets/jss/material-kit-react/views/loginPage.jsx";
-import image from "assets/img/green_bg.png";
+import image from "assets/img/white_bg.jpg";
 import LoaderButton from "components/LoaderButton";
 
 class LoginPage extends React.Component {
@@ -57,12 +57,13 @@ class LoginPage extends React.Component {
     try {
       await Auth.signIn(this.state.email, this.state.password).then(user => console.log(user));
       this.props.userHasAuthenticated(true);
-      this.props.history.push("/LandingPage");
+      this.props.history.push("/MemberPage");
     } catch (e) {
-      // if(e.message == "User is not confirmed.") {
-      //   this.setState({ errorMsg: e.message });
-      // }
-      this.setState({errorMsg: e.message});
+        if(e.message == "User is not confirmed.") {
+          this.setState({ errorMsg: "User is not confirmed. Please drop a mail to nenjaeyezhu.community@gmail.com from your registeted account." });
+        } else {
+          this.setState({errorMsg: e.message});
+        }
       this.setState({isLoading: false});
     }
   }
@@ -90,7 +91,7 @@ class LoginPage extends React.Component {
             <GridItem xs={12} sm={12} md={4}>
               <Card className={classes[this.state.cardAnimaton]}>
                 <form onSubmit={this.handleSubmit}>
-                  <CardHeader color="success" className={classes.cardHeader}>
+                  <CardHeader color="custom" className={classes.cardHeader}>
                     <h4>Login to NenjaeYezhu</h4>
                   </CardHeader>
                   <CardBody>
@@ -118,7 +119,11 @@ class LoginPage extends React.Component {
                           </InputAdornment>)
                         }}/>
                     </FormGroup>
-                    {this.state.errorMsg}
+                    <center>
+                      <h4 style={{
+                          color: "red"
+                        }}>{this.state.errorMsg}</h4>
+                    </center>
                     <LoaderButton block="block" bsSize="large" disabled={!this.validateForm()} type="submit" isLoading={this.state.isLoading} text="Login" loadingText="Logging in…"/>
                   </CardBody>
                 </form>

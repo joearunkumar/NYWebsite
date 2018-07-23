@@ -76,6 +76,7 @@ const successColor = "#4caf50";
 const infoColor = "#00acc1";
 const roseColor = "#e91e63";
 const grayColor = "#999999";
+const customColor= "#ff9800";
 
 const primaryBoxShadow = {
   boxShadow:
@@ -100,6 +101,10 @@ const dangerBoxShadow = {
 const roseBoxShadow = {
   boxShadow:
     "0 4px 20px 0px rgba(0, 0, 0, 0.14), 0 7px 10px -5px rgba(233, 30, 99, 0.4)"
+};
+const customBoxShadow = {
+  boxShadow:
+    "0 4px 20px 0px rgba(0, 0, 0, 0.14), 0 7px 12px -5px rgba(33, 33, 33, 0.46)"
 };
 
 const warningCardHeader = {
@@ -132,6 +137,11 @@ const roseCardHeader = {
   background: "linear-gradient(60deg, #ec407a, #d81b60)",
   ...roseBoxShadow
 };
+const customCardHeader = {
+  color: "#fff",
+  background: "linear-gradient(60deg, #0C8DD2, #d81b60)",
+  ...customBoxShadow
+};
 const cardActions = {
   margin: "0 20px 10px",
   paddingTop: "10px",
@@ -153,6 +163,14 @@ const defaultBoxShadow = {
     "0 10px 20px -12px rgba(0, 0, 0, 0.42), 0 3px 20px 0px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 0, 0, 0.2)",
   padding: "10px 0",
   transition: "all 150ms ease 0s"
+};
+
+const customTitle = {
+  color: "#0C8DD2",
+  margin: "1.75rem 0 0.875rem",
+  textDecoration: "none",
+  fontWeight: "1000",
+  fontFamily: `"Roboto Slab", "Times New Roman", serif`
 };
 
 const title = {
@@ -195,21 +213,25 @@ export {
   infoColor,
   roseColor,
   grayColor,
+  customColor,
   primaryBoxShadow,
   infoBoxShadow,
   successBoxShadow,
   warningBoxShadow,
   dangerBoxShadow,
   roseBoxShadow,
+  customBoxShadow,
   warningCardHeader,
   successCardHeader,
   dangerCardHeader,
   infoCardHeader,
   primaryCardHeader,
   roseCardHeader,
+  customCardHeader,
   cardActions,
   cardHeader,
   defaultBoxShadow,
+  customTitle,
   title,
   cardTitle,
   cardLink,

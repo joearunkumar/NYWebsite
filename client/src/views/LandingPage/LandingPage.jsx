@@ -20,7 +20,14 @@ class LandingPage extends React.Component {
     const { classes, ...rest } = this.props;
     return (
       <div>
-        <Parallax filter image={require("assets/img/green_bg.png")}>
+        <Parallax filter image={require("assets/img/white_bg.jpg")}>
+        <div className={classes.container}>
+          <GridContainer justify="center">
+              <div className={classes.brand}>
+                <h1 className={classes.customTitle}>Nenjae Yezhu</h1>
+              </div>
+          </GridContainer>
+        </div>
         </Parallax>
         <div className={classNames(classes.main, classes.mainRaised)}>
           <div className={classes.container}>
